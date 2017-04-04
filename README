@@ -2,6 +2,10 @@ Virtual Reality Drum Kit
 Bernie Birnbaum (c) 2016
 Created using technology by Gemsense
 
+Developer's Note
+-------------------
+This git repo mainly exists to deepen my public portfolio. Without the GemSense hardware the application will not be usable, though a demo video featuring a not-quite-final version can be found at https://youtu.be/88vWozu3EFk. Code I wrote is located in Assets/Scripts and Assets/Resources contain the sound files which are notable mainly for the naming scheme which the scripts rely on. For more info about the project feel free to contact me at bewebi@earthlink.net. For more about GemSense, their tech and SDK, head to www.gemsense.cool! 
+
 Overview
 -------------------
 Play the drums without waking the neighbors! The Virtual Reality Drum Kit places the user in a room with a customizable eight piece drum kit featuring a bass drum, a floor tom, a snare drum, hi-hats, two tom-toms, and two cymbals. Each drumstick is controlled by a gem, as are the foot pedals for the hi-hat and bass drums. The user can adjust the pitch on all drums, tighten or loosen the snares on the snare drum, and mix and match from a selection of 16 total pieces.
@@ -62,4 +66,4 @@ Gem Addresses
 Red marker gem: 	C4:BE:84:08:1A:72
 Green marker Gem: 	98:7B:F3:5A:5D:AD
 Bass pedal gem: 	D0:B5:C2:90:7C:53
-Hi-Hat: 			D0:B5:C2:90:78:E9
+Hi-Hat: 		D0:B5:C2:90:78:E9
