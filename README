@@ -1,0 +1,65 @@
+Virtual Reality Drum Kit
+Bernie Birnbaum (c) 2016
+Created using technology by Gemsense
+
+Overview
+-------------------
+Play the drums without waking the neighbors! The Virtual Reality Drum Kit places the user in a room with a customizable eight piece drum kit featuring a bass drum, a floor tom, a snare drum, hi-hats, two tom-toms, and two cymbals. Each drumstick is controlled by a gem, as are the foot pedals for the hi-hat and bass drums. The user can adjust the pitch on all drums, tighten or loosen the snares on the snare drum, and mix and match from a selection of 16 total pieces.
+
+Materials Needed
+-------------------
+- Samsung Galaxy phone
+- Samsung Gear VR
+- 4 Gemsense Gems
+- 2 sticks or cylindrical objects of similar diameter to the gems
+- Tape/Adhesive
+- 2 wristbands or scrunchies (optional)
+
+Setup
+-------------------
+Fasten two of the gems to the bottom of the sticks. Secure one gem to each foot (using wristbands or scrunchies if possible), ensuring that the charging port for each faces to the right. 
+Note: In this version gems are specifically identified by address in Unity
+
+Instructions
+-------------------
+Before starting the app, place the sticks on a flat surface with the charging ports of the gems facing to the right. Start the app, place the Galaxy phone in the Gear VR, put on the headset, and wait for all desired gems to be connected as indicated by readouts on the far wall of the room. The readouts from left to right are for the left drumstick, hi-hats, bass pedal, and right drumstick. Once all gems are connected, calibrate them by touching the touch-pad on the Gear VR. Pick up the sticks and begin playing!
+To adjust settings or change pieces, hold the tip of either drumstick within the piece of the drum kit to be customized. Applicable drop down menus will appear on the far wall. From left to right menus will appear for changing the instrument, adjusting the pitch, and adjusting the snares. To use the menus, point the headset in the direction of the menu until it is highlighted in blue. Touch the touch-pad to reveal available options, point the headset at the desired option so that it is highlight, and touch the touch-pad to confirm the change.
+
+File Summaries
+-------------------
+The following scripts can be found in /Assets/Scripts:
+DrumNoise.cs
+	Assigned to each drum
+	Responsible for making sure the correct sound files are accessible for the given drum and particular settings
+HihatCollisions.cs
+	Assigned to the top cymbal of each hi-hat
+	Responsible for foot 'chk' and foot splash sounds that are unique to the hi-hats
+HihatScript.cs
+	Assigned to each hi-hat
+	Responsible for detecting how open the hi-hats are (based on input from a gem) and updating the sounds available to play accordingly
+PedalScript.cs
+	Assigned to bass pedal
+	Responsible for movement of bass pedal
+PedalTipBehavior.cs
+	Assigned to bass pedal tip
+	Responsible for sound produced by bass pedal (with corrections made for noisy input from gem)
+ShaftScript.cs
+	Assigned to shaft of each drumstick
+	Responsible for producing sound when sticks collide
+StickScript.cs
+	Assigned to each drumstick
+	Responsible for movement of drumsticks based on input from gems
+TipBehavior.cs
+	Assigned to tip of each drumstick
+	Responsible for producing noise created when drumsticks strike instruments and for bringing up drop-down menus
+
+Sound files can be found in /Assets/Resources and are labeled in the following format:
+drumtype[pitchlevel][snarelevel][hihatlevel]number.wav
+Full documentation and explanation can be found in DrumNoise.cs
+
+Gem Addresses
+-------------------
+Red marker gem: 	C4:BE:84:08:1A:72
+Green marker Gem: 	98:7B:F3:5A:5D:AD
+Bass pedal gem: 	D0:B5:C2:90:7C:53
+Hi-Hat: 			D0:B5:C2:90:78:E9
