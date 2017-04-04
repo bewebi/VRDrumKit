@@ -1,0 +1,66 @@
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using GemSDK.Unity;
+using System.Runtime.InteropServices;
+using System;
+
+public class PedalScript : MonoBehaviour {
+
+	// Red marker gem: D0:B5:C2:90:7C:53
+	// Green marker Gem: 98:7B:F3:5A:5D:AD
+	public string Address;
+	public Text stateText;
+	public float acceleration;
+
+	// private Rigidbody rb;
+	private IGem gem;
+	// private Quaternion prevRot;
+
+	// Use this for initialization
+	void Start () {
+//		rb = GetComponent<Rigidbody>();
+
+		GemManager.Instance.Connect ();
+		gem = GemManager.Instance.GetGem(Address);
+	}
+
+	// Update is called once per frame
+	void FixedUpdate () {
+		if (gem != null)
+		{
+			if (Input.GetMouseButton(0) && !(this.transform.FindChild("Tip").GetComponent<TipBehavior>().dropdownActive))
+			{
+				gem.CalibrateAzimuth();
+
+				//Use instead of CalibrateAzimuth() to calibrate also tilt and elevation
+				//gem.ColibrateOrigin(); 
+			}
+			acceleration = gem.Acceleration.magnitude;
+			// transform.rotation = Quaternion.Slerp(prevRot, gem.Rotation, 0.5f);
+			// prevRot = gem.Rotation;
+			transform.rotation = gem.Rotation;
+			stateText.text = gem.State.ToString ();
+		}
+	}
+
+//	void OnTriggerEnter(Collider other) {
+//		
+//	}
+//		
+	void OnApplicationQuit(){
+		GemManager.Instance.Disconnect();
+	}
+//
+//	//For Android to unbind Gem Service when the app is not in focus
+	void OnApplicationPause(bool paused){
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			if (paused)
+				GemManager.Instance.Disconnect();
+			else
+				GemManager.Instance.Connect();
+		}
+	}
+}
+
